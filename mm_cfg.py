@@ -57,26 +57,18 @@ MAILMAN_SITE_LIST = 'mailman'
 #-------------------------------------------------------------
 # If you change these, you have to configure your http server
 # accordingly (Alias and ScriptAlias directives in most httpds)
-
-# I got some advice for the following from:
-# https://wiki.archlinux.org/index.php/mailman
-
-DEFAULT_URL_PATTERN = 'http://%s/'
-# PRIVATE_ARCHIVE_URL = '/cgi-bin/mailman/private'
-PUBLIC_ARCHIVE_URL = 'http://%(hostname)s/archives/%(listname)s'
+DEFAULT_URL_PATTERN = 'https://%s/'
 IMAGE_LOGOS         = '/images/mailman/'
 
 #-------------------------------------------------------------
 # Default domain for email addresses of newly created MLs
-DEFAULT_EMAIL_HOST = '${MAILMAN_DOMAIN}'
+DEFAULT_EMAIL_HOST = 'lists.purdueieee.org'
 #-------------------------------------------------------------
 # Default host for web interface of newly created MLs
-DEFAULT_URL_HOST   = '${MAILMAN_DOMAIN}'
+DEFAULT_URL_HOST = 'lists.purdueieee.org'
 #-------------------------------------------------------------
 # Required when setting any of its arguments.
-# add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
-VIRTUAL_HOSTS.clear()
-add_virtualhost(DEFAULT_URL_HOST,DEFAULT_EMAIL_HOST)
+add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
 #-------------------------------------------------------------
 # The default language for this server.
@@ -111,3 +103,4 @@ MTA='Postfix'
 
 # Note - if you're looking for something that is imported from mm_cfg, but you
 # didn't find it above, it's probably in /usr/lib/mailman/Mailman/Defaults.py.
+PUBLIC_ARCHIVE_URL = 'https://%(hostname)s/pipermail/%(listname)s'
